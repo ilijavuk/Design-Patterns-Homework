@@ -43,11 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Array.cs" />
     <Compile Include="Modeli\Dogadaj.cs" />
     <Compile Include="Modeli\Igrac.cs" />
     <Compile Include="Modeli\Klub.cs" />
     <Compile Include="Modeli\Sastav.cs" />
     <Compile Include="Modeli\Utakmica.cs" />
+    <Compile Include="ObradaPodataka\RedKartona.cs" />
+    <Compile Include="ObradaPodataka\RedLjestvice.cs" />
+    <Compile Include="ObradaPodataka\RedUtakmice.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Prvenstvo.cs" />
@@ -60,5 +64,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

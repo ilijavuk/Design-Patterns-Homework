@@ -18,5 +18,15 @@ namespace ivuk_zadaca_1.Modeli
             this.naziv = naziv;
             this.trener = trener;
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Klub klub &&
+                   oznaka == klub.oznaka;
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

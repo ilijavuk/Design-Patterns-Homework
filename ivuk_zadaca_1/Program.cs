@@ -54,18 +54,22 @@ namespace ivuk_zadaca_1
 
             while (true)
             {
-                Console.WriteLine("Odaberite opciju: ");
+                Console.WriteLine("Odaberite opciju (IZLAZ za izlaz): ");
                 unos = Console.ReadLine();
                 switch(true)
                 {
                     case bool _ when Regex.IsMatch(unos, @"^T( \d*)?$"):
-                        prvenstvo.ispisiKola(unos); break;
+                        prvenstvo.ispisiT(unos); break;
                     case bool _ when Regex.IsMatch(unos, @"^S( \d*)?$"):
-                        prvenstvo.ispisiStrijelce(unos); break;
+                        prvenstvo.ispisiS(unos); break;
                     case bool _ when Regex.IsMatch(unos, @"^K( \d*)?$"):
-                        prvenstvo.ispisiKartone(unos); break;
+                        prvenstvo.ispisiK(unos); break;
                     case bool _ when Regex.IsMatch(unos, @"^R [a-zA-Z]+( \d*)?"):
-                        prvenstvo.ispisiRezultate(unos); break;
+                        prvenstvo.ispisiR(unos); break;
+                    case bool _ when Regex.IsMatch(unos, @"^IZLAZ$"):
+                        Environment.Exit(0); break;
+                    default: Console.WriteLine("Ta opcija ne postoji"); break;
+
                 }
             }
 
