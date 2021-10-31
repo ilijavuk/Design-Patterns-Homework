@@ -55,6 +55,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Prvenstvo.cs" />
+    <Compile Include="UcitavanjeDatoteka\UcitavanjeDatoteka.cs" />
+    <Compile Include="UcitavanjeDatoteka\UcitavanjeDatotekaFactory.cs" />
     <Compile Include="UcitavanjeDatoteka\UcitavanjeDogadaja.cs" />
     <Compile Include="UcitavanjeDatoteka\UcitavanjeUtakmica.cs" />
     <Compile Include="UcitavanjeDatoteka\UcitavanjeSastava.cs" />

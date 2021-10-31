@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ivuk_zadaca_1.UcitavanjeDatoteka
 {
-    public class UcitavanjeKlubova
+    public class UcitavanjeKlubova : UcitavanjeDatoteka
     {
-        public List<Klub> DohvatiKlubove(string nazivDatoteke)
+        public List<Object> DohvatiPodatke(string nazivDatoteke, Prvenstvo _)
         {
             Console.WriteLine("\nUčitavam klubove \n");
             List<Klub> lista = new List<Klub>();
@@ -30,7 +30,7 @@ namespace ivuk_zadaca_1.UcitavanjeDatoteka
                     }
                 }
             }
-            return lista;
+            return lista.Cast<Object>().ToList();
         }
     }
 }

@@ -119,7 +119,7 @@ namespace ivuk_zadaca_1
             {
                 elem.Value.BrojOdigranihKola = odigranaKola[elem.Key].Distinct().ToList().Count();
                 Console.WriteLine(string.Format("{0, -4} {1, -20} {2, -20} {3, -40}", elem.Key.oznaka, 
-                    elem.Key.naziv, elem.Key.trener, elem.Value));
+                   elem.Key.naziv, elem.Key.trener, elem.Value));
             }
         }
 

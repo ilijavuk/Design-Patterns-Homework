@@ -34,37 +34,38 @@ namespace ivuk_zadaca_1
 
             Console.WriteLine("Započinjem učitavanje datoteka");
             string kluboviDat = args[args.ToList().FindIndex(arg => arg == "-k")+1];
-            prvenstvo.listaKlubova = ucitavanjeKlubova.DohvatiKlubove(kluboviDat);
+            prvenstvo.listaKlubova = ucitavanjeKlubova
+                .DohvatiPodatke(kluboviDat, prvenstvo).Cast<Klub>().ToList();
 
             string igraciDat = args[args.ToList().FindIndex(arg => arg == "-i") + 1];
             prvenstvo.listaIgraca = ucitavanjeIgraca
-                .DohvatiIgrace(igraciDat, prvenstvo.listaKlubova);
+                .DohvatiPodatke(igraciDat, prvenstvo).Cast<Igrac>().ToList();
 
             string sastaviDat = args[args.ToList().FindIndex(arg => arg == "-s") + 1];
             prvenstvo.listaSastava = ucitavanjeSastava
-                .DohvatiSastave(sastaviDat, prvenstvo.listaKlubova, prvenstvo.listaIgraca);
+                .DohvatiPodatke(sastaviDat, prvenstvo).Cast<Sastav>().ToList();
 
             string utakmiceDat = args[args.ToList().FindIndex(arg => arg == "-u") + 1];
             prvenstvo.listaUtakmica = ucitavanjeUtakmica
-                .DohvatiUtakmice(utakmiceDat, prvenstvo.listaKlubova);
+                .DohvatiPodatke(utakmiceDat, prvenstvo).Cast<Utakmica>().ToList();
 
             string dogadajiDat = args[args.ToList().FindIndex(arg => arg == "-d") + 1];
             prvenstvo.listaDogadaja = ucitavanjeDogadaja
-                .DohvatiDogadaje(dogadajiDat, prvenstvo.listaKlubova, prvenstvo.listaIgraca);
+                .DohvatiPodatke(dogadajiDat, prvenstvo).Cast<Dogadaj>().ToList();
 
             while (true)
             {
-                Console.WriteLine("Odaberite opciju (IZLAZ za izlaz): ");
+                Console.WriteLine("\nOdaberite opciju (IZLAZ za izlaz):\n");
                 unos = Console.ReadLine();
                 switch(true)
                 {
-                    case bool _ when Regex.IsMatch(unos, @"^T( \d*)?$"):
+                    case bool _ when Regex.IsMatch(unos, @"^T( \d+)?$"):
                         prvenstvo.ispisiT(unos); break;
-                    case bool _ when Regex.IsMatch(unos, @"^S( \d*)?$"):
+                    case bool _ when Regex.IsMatch(unos, @"^S( \d+)?$"):
                         prvenstvo.ispisiS(unos); break;
-                    case bool _ when Regex.IsMatch(unos, @"^K( \d*)?$"):
+                    case bool _ when Regex.IsMatch(unos, @"^K( \d+)?$"):
                         prvenstvo.ispisiK(unos); break;
-                    case bool _ when Regex.IsMatch(unos, @"^R [a-zA-Z]+( \d*)?"):
+                    case bool _ when Regex.IsMatch(unos, @"^R [a-zA-Z]+( \d+)?$"):
                         prvenstvo.ispisiR(unos); break;
                     case bool _ when Regex.IsMatch(unos, @"^IZLAZ$"):
                         Environment.Exit(0); break;

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ivuk_zadaca_1.UcitavanjeDatoteka
 {
-    public class UcitavanjeSastava
+    public class UcitavanjeSastava : UcitavanjeDatoteka
     {
-        public List<Sastav> DohvatiSastave(string nazivDatoteke, List<Klub> listaKlubova, List<Igrac> listaIgraca)
+        public List<Object> DohvatiPodatke(string nazivDatoteke, Prvenstvo p)
         {
             Console.WriteLine("\nUčitavam sastave po utakmicama \n");
             List<Sastav> lista = new List<Sastav>();
@@ -20,8 +20,8 @@ namespace ivuk_zadaca_1.UcitavanjeDatoteka
                 while (!citac.EndOfStream)
                 {
                     var vr = citac.ReadLine().Split(';');
-                    Klub klub = listaKlubova.Find(k => k.oznaka == vr[1]);
-                    Igrac igrac = listaIgraca.Find(i => i.ImeIPrezime == vr[3]);
+                    Klub klub = p.listaKlubova.Find(k => k.oznaka == vr[1]);
+                    Igrac igrac = p.listaIgraca.Find(i => i.ImeIPrezime == vr[3]);
                     if (vr.Length != 5 || 
                         Array.Exists(vr, element => element == "")) {
                         Console.WriteLine($"Pogrešan unos Sastava: {string.Join(" ", vr)} - prazan stupac");
@@ -36,7 +36,7 @@ namespace ivuk_zadaca_1.UcitavanjeDatoteka
                     }
                 }
             }
-            return lista;
+            return lista.Cast<Object>().ToList();
         }
     }
 }

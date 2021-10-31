@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ivuk_zadaca_1.UcitavanjeDatoteka
 {
-    public class UcitavanjeUtakmica
+    public class UcitavanjeUtakmica : UcitavanjeDatoteka
     {
-        public List<Utakmica> DohvatiUtakmice(string nazivDat, List<Klub> listaKlubova)
+        public List<Object> DohvatiPodatke(string nazivDat, Prvenstvo p)
         {
             Console.WriteLine("\nUčitavam utakmice \n");
             List<Utakmica> lista = new List<Utakmica>();
@@ -20,8 +20,8 @@ namespace ivuk_zadaca_1.UcitavanjeDatoteka
                 while (!citac.EndOfStream)
                 {
                     var vr = citac.ReadLine().Split(';');
-                    Klub domacin = listaKlubova.Find(k => k.oznaka == vr[2]);
-                    Klub gost = listaKlubova.Find(k => k.oznaka == vr[3]);
+                    Klub domacin = p.listaKlubova.Find(k => k.oznaka == vr[2]);
+                    Klub gost = p.listaKlubova.Find(k => k.oznaka == vr[3]);
                     if (vr.Length != 5 || Array.Exists(vr, element => element == ""))
                     {
                         Console.WriteLine($"Pogrešan unos Utakmice: {string.Join(" ", vr)} - stupci");
@@ -36,7 +36,7 @@ namespace ivuk_zadaca_1.UcitavanjeDatoteka
                     }
                 }
             }
-            return lista;
+            return lista.Cast<Object>().ToList();
         }
     }
 }

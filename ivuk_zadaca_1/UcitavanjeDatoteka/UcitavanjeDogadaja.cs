@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace ivuk_zadaca_1.UcitavanjeDatoteka
 {
-    public class UcitavanjeDogadaja
+    public class UcitavanjeDogadaja : UcitavanjeDatoteka
     {
         private void IspisiPogresku(string vrsta, string[] vr, string razlogPogreske)
         {
             Console.WriteLine($"Pogrešan unos događaja: {vrsta} | broj: {vr[0]} min: {vr[1]} - {razlogPogreske}");
         }
-        public List<Dogadaj> DohvatiDogadaje(string nazivDat, List<Klub> listaKlubova, List<Igrac> listaIgraca)
+        public List<Object> DohvatiPodatke(string nazivDat, Prvenstvo p)
         {
             List<Dogadaj> lista = new List<Dogadaj>();
             using (var citac = new StreamReader(nazivDat))
@@ -30,10 +30,10 @@ namespace ivuk_zadaca_1.UcitavanjeDatoteka
 
                     if ((vr.Length == 6 || vr.Length == 5 ) && vr[0] != "" && vr[1] != "" && vrsta != "")
                     {
-                        Klub klub = listaKlubova.Find(k => k.oznaka == vr[3]);
-                        Igrac igrac = listaIgraca.Find(i => i.ImeIPrezime == vr[4]);
+                        Klub klub = p.listaKlubova.Find(k => k.oznaka == vr[3]);
+                        Igrac igrac = p.listaIgraca.Find(i => i.ImeIPrezime == vr[4]);
                         Igrac zamjena = null;
-                        if (vr.Length == 6) zamjena = listaIgraca.Find(z => z.ImeIPrezime == vr[5]);
+                        if (vr.Length == 6) zamjena = p.listaIgraca.Find(z => z.ImeIPrezime == vr[5]);
                         try
                         {
                             Dogadaj d =
@@ -64,7 +64,7 @@ namespace ivuk_zadaca_1.UcitavanjeDatoteka
                     }
                 }
             }
-            return lista;
+            return lista.Cast<Object>().ToList();
         }
     }
 }
