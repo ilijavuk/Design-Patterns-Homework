@@ -9,6 +9,7 @@ namespace ivuk_zadaca_2.ObradaPodataka
     {
         public override void IspisiTablicu(string[] mogucnost, Prvenstvo p)
         {
+            /*
             int brojKola = -1;
             if (mogucnost.Length == 2)
             {
@@ -47,6 +48,7 @@ namespace ivuk_zadaca_2.ObradaPodataka
                 Console.WriteLine(string.Format("{0,-25} {1,-20} {2,-5}",
                     elem.Key.ImeIPrezime, elem.Key.Klub.naziv, elem.Value));
             }
+            */
         }
     }
 }

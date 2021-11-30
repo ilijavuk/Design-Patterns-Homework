@@ -11,6 +11,7 @@ namespace ivuk_zadaca_2.ObradaPodataka
     {
         public override void IspisiTablicu(string[] mogucnost, Prvenstvo p)
         {
+            /*
             int brojKola = -1;
             if (mogucnost.Length == 3)
             {
@@ -18,13 +19,12 @@ namespace ivuk_zadaca_2.ObradaPodataka
             }
 
 
-            Klub klub = p.listaKlubova.Find(k => k.oznaka == mogucnost[1]);
+            Klub klub = p.listaKlubova.ConvertAll(x => (Klub)x).Find(k => k.oznaka == mogucnost[1]);
             if (klub == null)
             {
                 Console.WriteLine("Taj klub ne postoji");
                 return;
             }
-
             IDictionary<Utakmica, RedUtakmice> dnevnikUtakmica =
             new Dictionary<Utakmica, RedUtakmice>();
 
@@ -74,6 +74,7 @@ namespace ivuk_zadaca_2.ObradaPodataka
             {
                 Console.WriteLine(elem.Value);
             }
+            */
         }
     }
-}
+    }

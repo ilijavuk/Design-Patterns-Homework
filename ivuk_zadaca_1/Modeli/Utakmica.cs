@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ivuk_zadaca_2.PomocneKlase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ivuk_zadaca_2.Modeli
 {
-    public class Utakmica
+    public class Utakmica: PrvenstvoComposite
     {
         public int Broj { get; set; }
         public int Kolo { get; set; }
@@ -21,6 +22,31 @@ namespace ivuk_zadaca_2.Modeli
             Domacin = domacin;
             Gost = gost;
             Pocetak = pocetak;
+            NazivRazine = NaziviRazina.Utakmica;
+            Djeca = new List<PrvenstvoComposite>();
+        }
+
+        public override void DodajDijete(PrvenstvoComposite prvenstvoComposite)
+        {
+            Djeca.Add(prvenstvoComposite);
+        }
+
+        public override void UkloniDijete(PrvenstvoComposite prvenstvoComposite)
+        {
+            Djeca.Remove(prvenstvoComposite);
+        }
+
+        public override List<PrvenstvoComposite> DohvatiDjecu()
+        {
+            return Djeca;
+        }
+
+        public override void IspisiInfo()
+        {
+            Console.WriteLine($"Utakmica: {Broj} {Kolo} {Domacin.oznaka} - {Gost.oznaka}");
+            foreach(PrvenstvoComposite dijete in Djeca) {
+                dijete.IspisiInfo();
+            }
         }
     }
 }

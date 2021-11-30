@@ -1,4 +1,5 @@
 ﻿using ivuk_zadaca_2.Modeli;
+using ivuk_zadaca_2.PomocneKlase;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,11 +13,10 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
     {
         private void IspisiPogresku(string vrsta, string[] vr, string razlogPogreske)
         {
-            Console.WriteLine($"Pogrešan unos događaja: {vrsta} | broj: {vr[0]} min: {vr[1]} - {razlogPogreske}");
+            Console.WriteLine($"Pogrešan unos događaja: {vrsta} | {string.Join(" ", vr)} - {razlogPogreske}");
         }
         public override void SpremiPodatkeUPrvenstvo(string nazivDat, Prvenstvo p)
         {
-            List<Dogadaj> lista = new List<Dogadaj>();
             using (var citac = new StreamReader(nazivDat))
             {
                 Console.WriteLine("\nUčitavam događaje \n");
@@ -28,10 +28,25 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
 
                     if ((vr.Length == 6 || vr.Length == 5 ) && vr[0] != "" && vr[1] != "" && vrsta != "")
                     {
-                        Klub klub = p.listaKlubova.Find(k => k.oznaka == vr[3]);
-                        Igrac igrac = p.listaIgraca.Find(i => i.ImeIPrezime == vr[4]);
+                        Klub klub = p.listaKlubova.ConvertAll(x => (Klub)x).Find(k => k.oznaka == vr[3]);
+                        if (klub == null)
+                        {
+                            Console.WriteLine($"Pogrešan unos događaja: {string.Join(" ", vr)} - utakmica ne postoji!");
+                            return;
+                        }
+                        List<Igrac> listaIgraca = klub.DohvatiDjecu().FindAll(el => el.NazivRazine == NaziviRazina.Igrac)
+                            .ConvertAll(x => (Igrac)x);
+                        Igrac igrac = listaIgraca.Find(i => i.ImeIPrezime == vr[4]);
                         Igrac zamjena = null;
-                        if (vr.Length == 6) zamjena = p.listaIgraca.Find(z => z.ImeIPrezime == vr[5]);
+
+                        Utakmica u = klub.DohvatiDjecu().FindAll(elem => elem.NazivRazine == NaziviRazina.Utakmica)
+                            .ConvertAll(x => (Utakmica)x).Find(ut => ut.Broj == int.Parse(vr[0]));
+                        if (u == null)
+                        {
+                            Console.WriteLine($"Pogrešan unos događaja: {string.Join(" ", vr)} - utakmica ne postoji!");
+                            return;
+                        }
+                        if (vr.Length == 6) zamjena = listaIgraca.Find(z => z.ImeIPrezime == vr[5]);
                         try
                         {
                             Dogadaj d =
@@ -48,7 +63,7 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
                             }
                             else
                             {
-                                lista.Add(d);
+                                u.DodajDijete(d);
                             }
                         }
                         catch (Exception e)
@@ -61,7 +76,6 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
                     }
                 }
             }
-            p.listaDogadaja = lista;
         }
     }
 }

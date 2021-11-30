@@ -1,6 +1,9 @@
-﻿namespace ivuk_zadaca_2.Modeli
+﻿using ivuk_zadaca_2.PomocneKlase;
+using System;
+
+namespace ivuk_zadaca_2.Modeli
 {
-    public class Dogadaj
+    public class Dogadaj: PrvenstvoComposite
     {
         public int Broj { get; set; }
         public string Min { get; set; }
@@ -17,6 +20,12 @@
             Klub = klub;
             Igrac = igrac;
             Zamjena = zamjena;
+            NazivRazine = NaziviRazina.Dogadaj;
+        }
+
+        public override void IspisiInfo()
+        {
+            Console.WriteLine($"Dogadaj: {Broj} {Min} {Vrsta} {Klub.oznaka} {Igrac.ImeIPrezime} {Zamjena}");
         }
     }
 }

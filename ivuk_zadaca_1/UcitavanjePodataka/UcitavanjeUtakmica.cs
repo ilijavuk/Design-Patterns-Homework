@@ -13,15 +13,14 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
         public override void SpremiPodatkeUPrvenstvo(string nazivDat, Prvenstvo p)
         {
             Console.WriteLine("\nUčitavam utakmice \n");
-            List<Utakmica> lista = new List<Utakmica>();
             using (var citac = new StreamReader(nazivDat))
             {
                 citac.ReadLine();
                 while (!citac.EndOfStream)
                 {
                     var vr = citac.ReadLine().Split(';');
-                    Klub domacin = p.listaKlubova.Find(k => k.oznaka == vr[2]);
-                    Klub gost = p.listaKlubova.Find(k => k.oznaka == vr[3]);
+                    Klub domacin = p.listaKlubova.ConvertAll(x => (Klub)x).Find(k => k.oznaka == vr[2]);
+                    Klub gost = p.listaKlubova.ConvertAll(x => (Klub)x).Find(k => k.oznaka == vr[3]);
                     if (vr.Length != 5 || Array.Exists(vr, element => element == ""))
                     {
                         Console.WriteLine($"Pogrešan unos Utakmice: {string.Join(" ", vr)} - stupci");
@@ -32,11 +31,12 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
                     }
                     else
                     {
-                        lista.Add(new Utakmica(int.Parse(vr[0]), int.Parse(vr[1]), domacin, gost, vr[4]));
+                        Utakmica u = new Utakmica(int.Parse(vr[0]), int.Parse(vr[1]), domacin, gost, vr[4]);
+                        domacin.DodajDijete(u);
+                        gost.DodajDijete(u);
                     }
                 }
             }
-            p.listaUtakmica = lista;
         }
     }
 }

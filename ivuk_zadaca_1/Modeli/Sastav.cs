@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ivuk_zadaca_2.PomocneKlase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ivuk_zadaca_2.Modeli
 {
-    public class Sastav
+    public class Sastav: PrvenstvoComposite
     {
         public int Broj { get; set; }
         public Klub Klub { get; set; }
@@ -21,6 +22,12 @@ namespace ivuk_zadaca_2.Modeli
             Vrsta = vrsta;
             Igrac = igrac;
             Pozicija = pozicija;
+            NazivRazine = NaziviRazina.Sastav;
+        }
+
+        public override void IspisiInfo()
+        {
+            Console.WriteLine($"Sastav: {Broj} {Klub.oznaka} {Vrsta} {Igrac.ImeIPrezime} {Pozicija}");
         }
     }
 }

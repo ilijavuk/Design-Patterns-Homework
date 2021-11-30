@@ -9,6 +9,13 @@ namespace ivuk_zadaca_2.ObradaPodataka
     {
         public override void IspisiTablicu(string[] mogucnost, Prvenstvo p)
         {
+            foreach (Klub klub in p.listaKlubova)
+            {
+                klub.IspisiInfo();
+                Console.WriteLine('\n');
+            }
+
+            /*
             int brojKola = -1;
             if (mogucnost.Length == 2)
             {
@@ -104,6 +111,7 @@ namespace ivuk_zadaca_2.ObradaPodataka
                 Console.WriteLine(string.Format("{0, -4} {1, -20} {2, -20} {3, -40}", elem.Key.oznaka,
                    elem.Key.naziv, elem.Key.trener, elem.Value));
             }
+            */
         }
     }
 }

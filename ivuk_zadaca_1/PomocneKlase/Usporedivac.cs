@@ -8,7 +8,7 @@ namespace ivuk_zadaca_2.PomocneKlase
 {
     public class Usporedivac
     {
-        private List<string> redoslijedArgumenata = new List<string>() { "-k", "-i", "-s", "-u", "-d" };
+        private List<string> redoslijedArgumenata = new List<string>() { "-k", "-i", "-u", "-s", "-d" };
 
         public int UsporediSa(string a, string b)
         {

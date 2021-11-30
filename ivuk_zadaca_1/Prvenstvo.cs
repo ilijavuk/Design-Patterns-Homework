@@ -8,11 +8,7 @@ namespace ivuk_zadaca_2
 {
     public sealed class Prvenstvo
     {
-        public List<Klub> listaKlubova;
-        public List<Igrac> listaIgraca;
-        public List<Sastav> listaSastava;
-        public List<Utakmica> listaUtakmica;
-        public List<Dogadaj> listaDogadaja;
+        public List<PrvenstvoComposite> listaKlubova;
         private IspisTabliceFactory obradaFactory = new IspisTabliceFactory();
         private Prvenstvo() {}
 

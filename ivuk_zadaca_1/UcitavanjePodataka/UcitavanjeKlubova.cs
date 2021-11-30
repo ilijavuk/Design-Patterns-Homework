@@ -13,20 +13,22 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
         public override void SpremiPodatkeUPrvenstvo(string nazivDatoteke, Prvenstvo p)
         {
             Console.WriteLine("\nUčitavam klubove \n");
-            List<Klub> lista = new List<Klub>();
+            List<PrvenstvoComposite> lista = new List<PrvenstvoComposite>();
             using (var citac = new StreamReader(nazivDatoteke))
             {
                 citac.ReadLine();
                 while (!citac.EndOfStream)
                 {
-                    var vrijednosti = citac.ReadLine().Split(';');
-                    if (vrijednosti.Length != 3 || Array.Exists(vrijednosti, element => element == ""))
+                    var vr = citac.ReadLine().Split(';');
+                    if (vr.Length != 3 || Array.Exists(vr, element => element == ""))
                     {
-                        Console.WriteLine($"Pogrešan unos kluba: {string.Join(" ", vrijednosti)}");
+                        Console.WriteLine($"Pogrešan unos kluba: {string.Join(" ", vr)}");
                     }
                     else
                     {
-                        lista.Add(new Klub(vrijednosti[0], vrijednosti[1], vrijednosti[2]));
+                        Klub k = new Klub(vr[0], vr[1]);
+                        k.DodajDijete(new Trener(vr[2]));
+                        lista.Add(k);
                     }
                 }
             }
