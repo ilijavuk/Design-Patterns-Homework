@@ -1,4 +1,4 @@
-﻿using ivuk_zadaca_1.Modeli;
+﻿using ivuk_zadaca_2.Modeli;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ivuk_zadaca_1.UcitavanjeDatoteka
+namespace ivuk_zadaca_2.UcitavanjePodataka
 {
     public class UcitavanjeIgraca : UcitavanjeDatoteka
     {
-        public List<Object> DohvatiPodatke(string igraciDat, Prvenstvo p)
+        public override void SpremiPodatkeUPrvenstvo(string igraciDat, Prvenstvo p)
         {
             Console.WriteLine("Učitavam igrače \n");
             List<Igrac> lista = new List<Igrac>();
@@ -31,7 +31,7 @@ namespace ivuk_zadaca_1.UcitavanjeDatoteka
                     }
                 }
             }
-            return lista.Cast<Object>().ToList();
+            p.listaIgraca = lista;
         }
     }
 }

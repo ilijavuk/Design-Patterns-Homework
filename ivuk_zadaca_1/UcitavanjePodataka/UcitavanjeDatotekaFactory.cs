@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ivuk_zadaca_1.UcitavanjeDatoteka
+namespace ivuk_zadaca_2.UcitavanjePodataka
 {
-    public class UcitavanjeDatoteka
+    public class UcitavanjeDatotekaFactory
     {
         public UcitavanjeDatoteka DohvatiUcitavac(string argument)
         {
-            switch(argument)
+            switch (argument)
             {
                 case "-k": return new UcitavanjeKlubova();
                 case "-i": return new UcitavanjeIgraca();

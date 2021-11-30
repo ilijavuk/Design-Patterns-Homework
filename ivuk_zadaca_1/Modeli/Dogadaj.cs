@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ivuk_zadaca_1.Modeli
+﻿namespace ivuk_zadaca_2.Modeli
 {
     public class Dogadaj
     {

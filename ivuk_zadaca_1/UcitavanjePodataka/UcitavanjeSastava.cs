@@ -1,16 +1,13 @@
-﻿using ivuk_zadaca_1.Modeli;
+﻿using ivuk_zadaca_2.Modeli;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ivuk_zadaca_1.UcitavanjeDatoteka
+namespace ivuk_zadaca_2.UcitavanjePodataka
 {
     public class UcitavanjeSastava : UcitavanjeDatoteka
     {
-        public List<Object> DohvatiPodatke(string nazivDatoteke, Prvenstvo p)
+        public override void SpremiPodatkeUPrvenstvo(string nazivDatoteke, Prvenstvo p)
         {
             Console.WriteLine("\nUčitavam sastave po utakmicama \n");
             List<Sastav> lista = new List<Sastav>();
@@ -36,7 +33,7 @@ namespace ivuk_zadaca_1.UcitavanjeDatoteka
                     }
                 }
             }
-            return lista.Cast<Object>().ToList();
+            p.listaSastava = lista;
         }
     }
 }

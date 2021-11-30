@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{21257A9A-8801-4863-9DA0-3AEF9D030CBD}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ivuk_zadaca_1</RootNamespace>
-    <AssemblyName>ivuk_zadaca_1</AssemblyName>
+    <RootNamespace>ivuk_zadaca_2</RootNamespace>
+    <AssemblyName>ivuk_zadaca_2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,25 +43,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Array.cs" />
     <Compile Include="Modeli\Dogadaj.cs" />
     <Compile Include="Modeli\Igrac.cs" />
     <Compile Include="Modeli\Klub.cs" />
     <Compile Include="Modeli\Sastav.cs" />
     <Compile Include="Modeli\Utakmica.cs" />
+    <Compile Include="ObradaPodataka\IspisK.cs" />
+    <Compile Include="ObradaPodataka\IspisR.cs" />
+    <Compile Include="ObradaPodataka\IspisS.cs" />
+    <Compile Include="ObradaPodataka\IspisT.cs" />
+    <Compile Include="ObradaPodataka\IspisTablice.cs" />
+    <Compile Include="ObradaPodataka\IspisTabliceFactory.cs" />
     <Compile Include="ObradaPodataka\RedKartona.cs" />
     <Compile Include="ObradaPodataka\RedLjestvice.cs" />
     <Compile Include="ObradaPodataka\RedUtakmice.cs" />
+    <Compile Include="PomocneKlase\Usporedivac.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Prvenstvo.cs" />
-    <Compile Include="UcitavanjeDatoteka\UcitavanjeDatoteka.cs" />
-    <Compile Include="UcitavanjeDatoteka\UcitavanjeDatotekaFactory.cs" />
-    <Compile Include="UcitavanjeDatoteka\UcitavanjeDogadaja.cs" />
-    <Compile Include="UcitavanjeDatoteka\UcitavanjeUtakmica.cs" />
-    <Compile Include="UcitavanjeDatoteka\UcitavanjeSastava.cs" />
-    <Compile Include="UcitavanjeDatoteka\UcitavanjeIgraca.cs" />
-    <Compile Include="UcitavanjeDatoteka\UcitavanjeKlubova.cs" />
+    <Compile Include="UcitavanjePodataka\UcitavanjeDatoteka.cs" />
+    <Compile Include="UcitavanjePodataka\UcitavanjeDatotekaFacade.cs" />
+    <Compile Include="UcitavanjePodataka\UcitavanjeDatotekaFactory.cs" />
+    <Compile Include="UcitavanjePodataka\UcitavanjeDogadaja.cs" />
+    <Compile Include="UcitavanjePodataka\UcitavanjeUtakmica.cs" />
+    <Compile Include="UcitavanjePodataka\UcitavanjeSastava.cs" />
+    <Compile Include="UcitavanjePodataka\UcitavanjeIgraca.cs" />
+    <Compile Include="UcitavanjePodataka\UcitavanjeKlubova.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

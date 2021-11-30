@@ -1,4 +1,4 @@
-﻿using ivuk_zadaca_1.Modeli;
+﻿using ivuk_zadaca_2.Modeli;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ivuk_zadaca_1.UcitavanjeDatoteka
+namespace ivuk_zadaca_2.UcitavanjePodataka
 {
     public class UcitavanjeDogadaja : UcitavanjeDatoteka
     {
@@ -14,7 +14,7 @@ namespace ivuk_zadaca_1.UcitavanjeDatoteka
         {
             Console.WriteLine($"Pogrešan unos događaja: {vrsta} | broj: {vr[0]} min: {vr[1]} - {razlogPogreske}");
         }
-        public List<Object> DohvatiPodatke(string nazivDat, Prvenstvo p)
+        public override void SpremiPodatkeUPrvenstvo(string nazivDat, Prvenstvo p)
         {
             List<Dogadaj> lista = new List<Dogadaj>();
             using (var citac = new StreamReader(nazivDat))
@@ -25,8 +25,6 @@ namespace ivuk_zadaca_1.UcitavanjeDatoteka
                 {
                     var vr = citac.ReadLine().Split(';');
                     string vrsta = vr[2];
-                    // vrsta == 00 || vrsta == 99 - ništa nije obavezno
-                    // vrsta == 1 || 3 | 10 | 11 - prvih 5 - 6. prazan
 
                     if ((vr.Length == 6 || vr.Length == 5 ) && vr[0] != "" && vr[1] != "" && vrsta != "")
                     {
@@ -56,7 +54,6 @@ namespace ivuk_zadaca_1.UcitavanjeDatoteka
                         catch (Exception e)
                         {
                             Console.WriteLine(e.Message);
-                            // Console.WriteLine($"Pogrešan unos Dogadaja: {string.Join(" ", vr)} - parse");
                         }
                     }
                     else {
@@ -64,7 +61,7 @@ namespace ivuk_zadaca_1.UcitavanjeDatoteka
                     }
                 }
             }
-            return lista.Cast<Object>().ToList();
+            p.listaDogadaja = lista;
         }
     }
 }
