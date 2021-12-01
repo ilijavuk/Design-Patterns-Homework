@@ -25,11 +25,11 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
 
                     if (vr.Length != 5 || 
                         Array.Exists(vr, element => element == "")) {
-                        Console.WriteLine($"Pogrešan unos Sastava: {string.Join(" ", vr)} - prazan stupac");
+                        Console.WriteLine($"Pogrešan unos Sastava: '{string.Join(" ", vr)}' - prazan stupac");
                     }
                     else if (klub == null || igrac == null || u == null)
                     {
-                        Console.WriteLine($"Pogrešan unos Sastava: {string.Join(" ", vr)} - klub, igrač ili utakmica ne postoje");
+                        Console.WriteLine($"Pogrešan unos Sastava: '{string.Join(" ", vr)}' - klub, igrač ili utakmica ne postoje");
                     }
                     else
                     {

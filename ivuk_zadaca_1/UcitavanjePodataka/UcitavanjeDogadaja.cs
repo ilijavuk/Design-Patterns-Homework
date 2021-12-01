@@ -13,7 +13,7 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
     {
         private void IspisiPogresku(string vrsta, string[] vr, string razlogPogreske)
         {
-            Console.WriteLine($"Pogrešan unos događaja: {vrsta} | {string.Join(" ", vr)} - {razlogPogreske}");
+            Console.WriteLine($"Pogrešan unos događaja: '{string.Join(" ", vr)}' - {razlogPogreske}:{vrsta}");
         }
         public override void SpremiPodatkeUPrvenstvo(string nazivDat, Prvenstvo p)
         {
@@ -31,8 +31,8 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
                         Klub klub = p.listaKlubova.ConvertAll(x => (Klub)x).Find(k => k.oznaka == vr[3]);
                         if (klub == null)
                         {
-                            Console.WriteLine($"Pogrešan unos događaja: {string.Join(" ", vr)} - utakmica ne postoji!");
-                            return;
+                            Console.WriteLine($"Pogrešan unos događaja: '{string.Join(" ", vr)}' - klub ne postoji!");
+                            continue;
                         }
                         List<Igrac> listaIgraca = klub.DohvatiDjecu().FindAll(el => el.NazivRazine == NaziviRazina.Igrac)
                             .ConvertAll(x => (Igrac)x);
@@ -43,8 +43,8 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
                             .ConvertAll(x => (Utakmica)x).Find(ut => ut.Broj == int.Parse(vr[0]));
                         if (u == null)
                         {
-                            Console.WriteLine($"Pogrešan unos događaja: {string.Join(" ", vr)} - utakmica ne postoji!");
-                            return;
+                            Console.WriteLine($"Pogrešan unos događaja: '{string.Join(" ", vr)}' - utakmica ne postoji!");
+                            continue;
                         }
                         if (vr.Length == 6) zamjena = listaIgraca.Find(z => z.ImeIPrezime == vr[5]);
                         try
@@ -72,7 +72,7 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
                         }
                     }
                     else {
-                        Console.WriteLine($"Pogrešan unos Dogadaja: {vr[0]} {vr[1]} {vr[2]} - stupci");
+                        Console.WriteLine($"Pogrešan unos Dogadaja: '{string.Join(" ", vr)}' - stupci");
                     }
                 }
             }

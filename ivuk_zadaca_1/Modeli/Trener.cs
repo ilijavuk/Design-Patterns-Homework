@@ -14,5 +14,20 @@ namespace ivuk_zadaca_2.Modeli
             ImeIPrezime = imeIPrezime;
             NazivRazine = NaziviRazina.Trener;
         }
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return ImeIPrezime;
+        }
     }
 }

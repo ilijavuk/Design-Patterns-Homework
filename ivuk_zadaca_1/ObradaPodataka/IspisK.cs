@@ -1,4 +1,5 @@
 ﻿using ivuk_zadaca_2.Modeli;
+using ivuk_zadaca_2.PomocneKlase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,6 @@ namespace ivuk_zadaca_2.ObradaPodataka
     {
         public override void IspisiTablicu(string[] mogucnost, Prvenstvo p)
         {
-            /*
             int brojKola = -1;
             if (mogucnost.Length == 2)
             {
@@ -17,19 +17,26 @@ namespace ivuk_zadaca_2.ObradaPodataka
             }
 
             IDictionary<Klub, RedKartona> dnevnikKartona =
-            new Dictionary<Klub, RedKartona>();
+                new Dictionary<Klub, RedKartona>();
+            List<Utakmica> utakmice = new List<Utakmica>();
 
             foreach (Klub klub in p.listaKlubova)
             {
                 dnevnikKartona.Add(klub, new RedKartona());
+                foreach (Utakmica u in klub.DohvatiDjecu().FindAll(el => el.NazivRazine == NaziviRazina.Utakmica))
+                {
+                    if (utakmice.Find(elem => elem.Broj == u.Broj) == null)
+                        utakmice.Add(u);
+                }
             }
 
-            foreach (Utakmica utakmica in p.listaUtakmica)
+            foreach (Utakmica u in utakmice)
             {
                 List<Igrac> igraciSKartonima = new List<Igrac>();
-                if (brojKola != -1 && utakmica.Kolo > brojKola) continue;
+                if (brojKola != -1 && u.Kolo > brojKola) continue;
 
-                List<Dogadaj> dogadajiUtakmice = p.listaDogadaja.FindAll(d => d.Broj == utakmica.Broj);
+                List<Dogadaj> dogadajiUtakmice = u.DohvatiDjecu()
+                    .FindAll(el => el.NazivRazine == NaziviRazina.Dogadaj).ConvertAll(x => (Dogadaj)x);
                 foreach (Dogadaj d in dogadajiUtakmice)
                 {
                     if (d.Vrsta == 10)
@@ -64,7 +71,6 @@ namespace ivuk_zadaca_2.ObradaPodataka
                 Console.WriteLine(string.Format("{0, -4} {1, -20} {2, -48}", elem.Key.oznaka,
                     elem.Key.naziv, elem.Value));
             }
-            */
         }
     }
 }

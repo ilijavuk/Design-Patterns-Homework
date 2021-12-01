@@ -19,7 +19,7 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
             Dictionary<string, string> dnevnikArgs =
                 new Dictionary<string, string>();
 
-            if (!argumentiURedu || args.Length != 10)
+            if (!argumentiURedu)
             {
                 Console.WriteLine("Argumenti nisu u redu. Izlazim iz programa.");
                 Environment.Exit(0);

@@ -1,4 +1,5 @@
 ﻿using ivuk_zadaca_2.Modeli;
+using ivuk_zadaca_2.PomocneKlase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,6 @@ namespace ivuk_zadaca_2.ObradaPodataka
     {
         public override void IspisiTablicu(string[] mogucnost, Prvenstvo p)
         {
-            foreach (Klub klub in p.listaKlubova)
-            {
-                klub.IspisiInfo();
-                Console.WriteLine('\n');
-            }
-
-            /*
             int brojKola = -1;
             if (mogucnost.Length == 2)
             {
@@ -26,14 +20,20 @@ namespace ivuk_zadaca_2.ObradaPodataka
             new Dictionary<Klub, RedLjestvice>();
             IDictionary<Klub, List<int>> odigranaKola =
             new Dictionary<Klub, List<int>>();
+            List<Utakmica> utakmice = new List<Utakmica>();
 
             foreach (Klub klub in p.listaKlubova)
             {
                 dnevnikTablice.Add(klub, new RedLjestvice());
                 odigranaKola.Add(klub, new List<int>());
+                foreach (Utakmica u in klub.DohvatiDjecu().FindAll(el => el.NazivRazine == NaziviRazina.Utakmica))
+                {
+                    if (utakmice.Find(elem => elem.Broj == u.Broj) == null)
+                        utakmice.Add(u);
+                }
             }
 
-            foreach (Utakmica utakmica in p.listaUtakmica)
+            foreach (Utakmica utakmica in utakmice)
             {
                 if (brojKola != -1 && utakmica.Kolo > brojKola) continue;
 
@@ -41,7 +41,8 @@ namespace ivuk_zadaca_2.ObradaPodataka
                 odigranaKola[utakmica.Gost].Add(utakmica.Kolo);
                 int golDom = 0, golGost = 0;
 
-                List<Dogadaj> dogadajiUtakmice = p.listaDogadaja.FindAll(d => d.Broj == utakmica.Broj);
+                List<Dogadaj> dogadajiUtakmice = utakmica.DohvatiDjecu()
+                    .FindAll(el => el.NazivRazine == NaziviRazina.Dogadaj).ConvertAll(x => (Dogadaj)x);
                 foreach (Dogadaj d in dogadajiUtakmice)
                 {
                     if (d.Vrsta == 1 || d.Vrsta == 2)
@@ -109,9 +110,8 @@ namespace ivuk_zadaca_2.ObradaPodataka
             {
                 elem.Value.BrojOdigranihKola = odigranaKola[elem.Key].Distinct().ToList().Count();
                 Console.WriteLine(string.Format("{0, -4} {1, -20} {2, -20} {3, -40}", elem.Key.oznaka,
-                   elem.Key.naziv, elem.Key.trener, elem.Value));
+                   elem.Key.naziv, elem.Key.DohvatiDjecu().Find(el=>el.NazivRazine == NaziviRazina.Trener).ToString(), elem.Value));
             }
-            */
         }
     }
 }

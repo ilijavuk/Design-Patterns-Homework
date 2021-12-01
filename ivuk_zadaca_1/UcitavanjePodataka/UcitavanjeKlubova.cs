@@ -22,7 +22,7 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
                     var vr = citac.ReadLine().Split(';');
                     if (vr.Length != 3 || Array.Exists(vr, element => element == ""))
                     {
-                        Console.WriteLine($"Pogrešan unos kluba: {string.Join(" ", vr)}");
+                        Console.WriteLine($"Pogrešan unos kluba: '{string.Join(" ", vr)}'");
                     }
                     else
                     {

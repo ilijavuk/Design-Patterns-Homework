@@ -22,7 +22,7 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
                     Klub klub = p.listaKlubova.ConvertAll(x => (Klub)x).Find(k => k.oznaka == vr[0]);
                     if (vr.Length != 4 || Array.Exists(vr, element => element == "") || klub == null)
                     {
-                        Console.WriteLine($"Pogrešan unos Igraca: {string.Join(" ", vr)}");
+                        Console.WriteLine($"Pogrešan unos Igraca: '{string.Join(" ", vr)}'");
                     }
                     else
                     {

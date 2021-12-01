@@ -23,11 +23,11 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
                     Klub gost = p.listaKlubova.ConvertAll(x => (Klub)x).Find(k => k.oznaka == vr[3]);
                     if (vr.Length != 5 || Array.Exists(vr, element => element == ""))
                     {
-                        Console.WriteLine($"Pogrešan unos Utakmice: {string.Join(" ", vr)} - stupci");
+                        Console.WriteLine($"Pogrešan unos Utakmice: '{string.Join(" ", vr)}' - stupci");
                     }
                     else if (domacin == null || gost == null)
                     {
-                        Console.WriteLine($"Pogrešan unos Utakmice: {string.Join(" ", vr)} - klub ne postoji");
+                        Console.WriteLine($"Pogrešan unos Utakmice: '{string.Join(" ", vr)}' - klub ne postoji");
                     }
                     else
                     {

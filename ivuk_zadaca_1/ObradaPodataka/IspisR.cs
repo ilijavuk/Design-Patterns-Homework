@@ -1,4 +1,5 @@
 ﻿using ivuk_zadaca_2.Modeli;
+using ivuk_zadaca_2.PomocneKlase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,6 @@ namespace ivuk_zadaca_2.ObradaPodataka
     {
         public override void IspisiTablicu(string[] mogucnost, Prvenstvo p)
         {
-            /*
             int brojKola = -1;
             if (mogucnost.Length == 3)
             {
@@ -28,14 +28,15 @@ namespace ivuk_zadaca_2.ObradaPodataka
             IDictionary<Utakmica, RedUtakmice> dnevnikUtakmica =
             new Dictionary<Utakmica, RedUtakmice>();
 
-            List<Utakmica> utakmiceZaKlub = p.listaUtakmica
-                .FindAll(u => u.Domacin == klub || u.Gost == klub);
+            List<Utakmica> utakmiceZaKlub = klub.DohvatiDjecu().FindAll(el => el.NazivRazine == NaziviRazina.Utakmica).ConvertAll(x => (Utakmica)x);
+
             foreach (Utakmica u in utakmiceZaKlub)
             {
                 if (brojKola != -1 && u.Kolo > brojKola) continue;
                 int golDom = 0, golGost = 0;
 
-                List<Dogadaj> dogadajiUtakmice = p.listaDogadaja.FindAll(d => d.Broj == u.Broj);
+                List<Dogadaj> dogadajiUtakmice = u.DohvatiDjecu()
+                    .FindAll(el => el.NazivRazine == NaziviRazina.Dogadaj).ConvertAll(x => (Dogadaj)x);
                 foreach (Dogadaj d in dogadajiUtakmice)
                 {
                     if (d.Vrsta == 1 || d.Vrsta == 2)
@@ -74,7 +75,6 @@ namespace ivuk_zadaca_2.ObradaPodataka
             {
                 Console.WriteLine(elem.Value);
             }
-            */
         }
     }
     }
