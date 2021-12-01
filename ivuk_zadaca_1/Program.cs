@@ -11,14 +11,14 @@ namespace ivuk_zadaca_2
            
             Prvenstvo prvenstvo = Prvenstvo.Instance;
             UcitavanjeDatotekaFacade udf = new UcitavanjeDatotekaFacade();
-            udf.ucitajDatoteke(args);
+            udf.UcitajDatoteke(args);
 
             string unos;
             while (true)
             {
                 Console.WriteLine("\nOdaberite opciju (IZLAZ za izlaz):\n");
                 unos = Console.ReadLine();
-                prvenstvo.ispisiTablicu(unos);
+                prvenstvo.IspisiTablicu(unos);
             }
 
         }

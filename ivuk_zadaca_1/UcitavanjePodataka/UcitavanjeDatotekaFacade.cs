@@ -8,9 +8,8 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
 {
     public class UcitavanjeDatotekaFacade
     {
-        public void ucitajDatoteke(String[] args)
+        public void UcitajDatoteke(string[] args)
         {
-            Prvenstvo prvenstvo = Prvenstvo.Instance;
             Console.WriteLine("");
             string argumenti = string.Join(" ", args) + " ";
             Regex regex = new Regex(@"^(-(d|s|i|u|k) [\w\-.]+\.csv )+$");
@@ -40,8 +39,16 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
             foreach (string kljuc in kljucevi)
             {
                 UcitavanjeDatoteka ud = udFactory.DohvatiUcitavac(kljuc);
-                ud.SpremiPodatkeUPrvenstvo(dnevnikArgs[kljuc], prvenstvo);
+                ud.SpremiPodatkeUPrvenstvo(dnevnikArgs[kljuc]);
             }
+        }
+
+        public void NaknadnoUcitavanje(string unos)
+        {
+            UcitavanjeDatotekaFactory udFactory = new UcitavanjeDatotekaFactory();
+            string[] vr = unos.Split(' ');
+            UcitavanjeDatoteka ud = udFactory.DohvatiUcitavac(vr[0]);
+            ud.SpremiPodatkeUPrvenstvo(vr[1]);
         }
     }
 }

@@ -10,8 +10,9 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
 {
     public class UcitavanjeUtakmica : UcitavanjeDatoteka
     {
-        public override void SpremiPodatkeUPrvenstvo(string nazivDat, Prvenstvo p)
+        public override void SpremiPodatkeUPrvenstvo(string nazivDat)
         {
+            Prvenstvo p = Prvenstvo.Instance;
             Console.WriteLine("\nUčitavam utakmice \n");
             using (var citac = new StreamReader(nazivDat))
             {

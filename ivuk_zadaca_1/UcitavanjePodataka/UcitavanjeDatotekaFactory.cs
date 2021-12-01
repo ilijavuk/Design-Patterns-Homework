@@ -17,6 +17,9 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
                 case "-s": return new UcitavanjeSastava();
                 case "-u": return new UcitavanjeUtakmica();
                 case "-d": return new UcitavanjeDogadaja();
+                case "NU": return new UcitavanjeUtakmica();
+                case "NS": return new UcitavanjeSastava();
+                case "ND": return new UcitavanjeDogadaja();
                 default: return null;
             }
         }

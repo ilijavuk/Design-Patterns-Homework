@@ -8,6 +8,6 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
 {
     public abstract class UcitavanjeDatoteka
     {
-        public abstract void SpremiPodatkeUPrvenstvo(string nazivDat, Prvenstvo p);
+        public abstract void SpremiPodatkeUPrvenstvo(string nazivDat);
     }
 }

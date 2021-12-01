@@ -15,8 +15,9 @@ namespace ivuk_zadaca_2.UcitavanjePodataka
         {
             Console.WriteLine($"Pogrešan unos događaja: '{string.Join(" ", vr)}' - {razlogPogreske}:{vrsta}");
         }
-        public override void SpremiPodatkeUPrvenstvo(string nazivDat, Prvenstvo p)
+        public override void SpremiPodatkeUPrvenstvo(string nazivDat)
         {
+            Prvenstvo p = Prvenstvo.Instance;
             using (var citac = new StreamReader(nazivDat))
             {
                 Console.WriteLine("\nUčitavam događaje \n");
