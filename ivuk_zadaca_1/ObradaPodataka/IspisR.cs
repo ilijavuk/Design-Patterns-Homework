@@ -10,8 +10,9 @@ namespace ivuk_zadaca_2.ObradaPodataka
 {
     public class IspisR : IspisTablice
     {
-        public override void IspisiTablicu(string[] mogucnost, Prvenstvo p)
+        public override void IspisiTablicu(string[] mogucnost)
         {
+            Prvenstvo p = Prvenstvo.Instance;
             int brojKola = -1;
             if (mogucnost.Length == 3)
             {

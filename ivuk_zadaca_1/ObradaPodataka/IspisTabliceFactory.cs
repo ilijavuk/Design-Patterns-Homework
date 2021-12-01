@@ -10,6 +10,11 @@
                 case "S": return new IspisS();
                 case "K": return new IspisK();
                 case "R": return new IspisR();
+                case "D": {
+                    IspisD ispis = new IspisD();
+                    new Semafor(ispis);
+                    return ispis;
+                }
                 default: return null;
             }
         }

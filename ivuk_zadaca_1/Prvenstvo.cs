@@ -30,7 +30,8 @@ namespace ivuk_zadaca_2
             
             if(!Regex.IsMatch(unos, @"^(T|S|K)( \d+)?$") &&
                !Regex.IsMatch(unos, @"^R [a-zA-Z]+( \d+)?$") &&
-               !Regex.IsMatch(unos, @"^(NU|NS|ND|) [\w\-.]+\.csv$"))
+               !Regex.IsMatch(unos, @"^(NU|NS|ND|) [\w\-.]+\.csv$") &&
+               !Regex.IsMatch(unos, @"^D \d [a-zA-Z]+ [a-zA-Z]+ \d$"))
             {
                 Console.WriteLine("Ta opcija ne postoji"); return;
             }
@@ -41,7 +42,7 @@ namespace ivuk_zadaca_2
             } else
             {
                 obradaFactory.DohvatiIspis(unosRazdvojen[0])
-                    .IspisiTablicu(unosRazdvojen, Instance);
+                    .IspisiTablicu(unosRazdvojen);
             }
         }
     }

@@ -51,6 +51,7 @@
     <Compile Include="Modeli\Sastav.cs" />
     <Compile Include="Modeli\Trener.cs" />
     <Compile Include="Modeli\Utakmica.cs" />
+    <Compile Include="ObradaPodataka\IspisD.cs" />
     <Compile Include="ObradaPodataka\IspisK.cs" />
     <Compile Include="ObradaPodataka\IspisR.cs" />
     <Compile Include="ObradaPodataka\IspisS.cs" />
@@ -60,6 +61,9 @@
     <Compile Include="ObradaPodataka\RedKartona.cs" />
     <Compile Include="ObradaPodataka\RedLjestvice.cs" />
     <Compile Include="ObradaPodataka\RedUtakmice.cs" />
+    <Compile Include="ObradaPodataka\Semafor.cs" />
+    <Compile Include="ObradaPodataka\SemaforObserver.cs" />
+    <Compile Include="ObradaPodataka\SemaforSubject.cs" />
     <Compile Include="PomocneKlase\EmptyLineConsole.cs" />
     <Compile Include="PomocneKlase\NaziviRazina.cs" />
     <Compile Include="PomocneKlase\Usporedivac.cs" />

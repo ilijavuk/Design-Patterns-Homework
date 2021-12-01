@@ -2,6 +2,6 @@
 {
     public abstract class IspisTablice
     {
-        public abstract void IspisiTablicu(string[] mogucnost, Prvenstvo p);
+        public abstract void IspisiTablicu(string[] mogucnost);
     }
 }
