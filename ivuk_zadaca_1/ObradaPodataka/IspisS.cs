@@ -54,11 +54,19 @@ namespace ivuk_zadaca_2.ObradaPodataka
             Console.WriteLine(string.Format("{0,-25} {1,-20} {2,-5}",
                     "Ime i prezime", "Naziv kluba", "Broj golova"));
 
+            EmptyLineConsole.IspisiCrtice(58);
+            int sum = 0;
+
             foreach (var elem in strijelci)
             {
-                Console.WriteLine(string.Format("{0,-25} {1,-20} {2,-5}",
+                sum += elem.Value;
+                Console.WriteLine(string.Format("{0,-25} {1,-20} {2, 11}",
                     elem.Key.ImeIPrezime, elem.Key.Klub.naziv, elem.Value));
             }
+
+            EmptyLineConsole.IspisiCrtice(58);
+            Console.WriteLine(string.Format("{0,-45} {1, 12}",
+                "Sumirano: ", sum));
         }
     }
 }

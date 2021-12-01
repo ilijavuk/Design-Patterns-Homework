@@ -60,17 +60,30 @@ namespace ivuk_zadaca_2.ObradaPodataka
 
             dnevnikKartona = dnevnikKartona
                 .OrderByDescending(x => (x.Value.BrojZutih + x.Value.BrojDrugihZutih + x.Value.BrojCrvenih))
+                .ThenByDescending(x => x.Value.BrojCrvenih)
+                .ThenByDescending(x => x.Value.BrojDrugihZutih)
                 .ToDictionary(x => x.Key, x => x.Value);
 
             Console.WriteLine(string.Format("{0, -4} {1, -20} " +
                 "{2,-12} {3,-12} {4,-12} {5,-12}",
                 "Oznaka", "Naziv", "Žuti", "Drugi žuti", "Crveni", "Ukupno"));
 
+            EmptyLineConsole.IspisiCrtice(73);
+            RedKartona sum = new RedKartona();
+
             foreach (var elem in dnevnikKartona)
             {
-                Console.WriteLine(string.Format("{0, -4} {1, -20} {2, -48}", elem.Key.oznaka,
+                sum.BrojZutih += elem.Value.BrojZutih;
+                sum.BrojDrugihZutih += elem.Value.BrojDrugihZutih;
+                sum.BrojCrvenih += elem.Value.BrojCrvenih;           
+
+                Console.WriteLine(string.Format("{0, -6} {1, -20} {2, -48}", elem.Key.oznaka,
                     elem.Key.naziv, elem.Value));
             }
+            EmptyLineConsole.IspisiCrtice(73);
+            Console.WriteLine(string.Format("{0, -27} {1, 4} {2, 18} {3, 8} {4, 12}",
+                    "Sumirano: ", sum.BrojZutih, sum.BrojDrugihZutih, sum.BrojCrvenih,
+                    sum.BrojZutih + sum.BrojDrugihZutih + sum.BrojCrvenih));
         }
     }
 }

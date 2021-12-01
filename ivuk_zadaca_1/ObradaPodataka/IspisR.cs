@@ -67,14 +67,15 @@ namespace ivuk_zadaca_2.ObradaPodataka
                 dnevnikUtakmica.Add(u, ru);
             }
 
-            Console.WriteLine("Rezultati za Dinamo");
-            Console.WriteLine(string.Format("{0, 5} {1,-12} {2,-20} {3,-20} {4,-20}",
+            Console.WriteLine($"Rezultati za {klub.naziv}");
+            Console.WriteLine(string.Format("{0, -5} {1, -20} {2,-20} {3,-20} {4,-20}",
                 "Kolo", "Vrijeme", "Domaćin", "Gost", "Rezultat"));
-
+            EmptyLineConsole.IspisiCrtice(77);
             foreach (var elem in dnevnikUtakmica)
             {
                 Console.WriteLine(elem.Value);
             }
+            EmptyLineConsole.IspisiCrtice(77);
         }
     }
     }

@@ -19,7 +19,7 @@ namespace ivuk_zadaca_2.ObradaPodataka
 
         public override string ToString()
         {
-            return string.Format("{0,-12} {1,-12} {2,-12} {3,-12} {4,-12} {5,-12} {6,-12} {7,-12}",
+            return string.Format("{0, 10} {1, 9} {2, 10} {3, 11} {4, 12} {5, 11} {6, 8} {7, 10}",
                     BrojOdigranihKola, BrojPobjeda, BrojNerijesenih, BrojPoraza, BrojDanihGolova,
                     BrojPrimljenihGolova, BrojDanihGolova - BrojPrimljenihGolova, BrojBodova);       
         }

@@ -60,6 +60,7 @@
     <Compile Include="ObradaPodataka\RedKartona.cs" />
     <Compile Include="ObradaPodataka\RedLjestvice.cs" />
     <Compile Include="ObradaPodataka\RedUtakmice.cs" />
+    <Compile Include="PomocneKlase\EmptyLineConsole.cs" />
     <Compile Include="PomocneKlase\NaziviRazina.cs" />
     <Compile Include="PomocneKlase\Usporedivac.cs" />
     <Compile Include="Program.cs" />

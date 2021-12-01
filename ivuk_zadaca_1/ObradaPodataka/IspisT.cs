@@ -98,20 +98,37 @@ namespace ivuk_zadaca_2.ObradaPodataka
             }
 
             dnevnikTablice = dnevnikTablice.OrderByDescending(x => x.Value.BrojBodova)
+                .ThenByDescending(x => x.Value.BrojDanihGolova - x.Value.BrojPrimljenihGolova)
+                .ThenByDescending(x => x.Value.BrojDanihGolova)
+                .ThenByDescending(x => x.Value.BrojPobjeda)
                 .ToDictionary(x => x.Key, x => x.Value);
 
-            Console.WriteLine(string.Format("{0, -4} {1, -20} {2, -10}" +
-                "{3,-12} {4,-12} {5,-12} {6,-12} {7,-12} {8,-12} {9,-12} {10,-12}",
+            Console.WriteLine(string.Format("{0, -6} {1, -25} {2, -20}" +
+                "{3,-12} {4,-9} {5,-10} {6,-10} {7,-12} {8,-11} {9,-8} {10,-10}",
                 "Oznaka", "Naziv", "Trener", "brojOdigKol", "brojPobj", "brojNerij",
                     "brojPoraza", "brojDanihGol", "brojPrimGol", "golRazli",
                     "brojBodova"));
+            
+            EmptyLineConsole.IspisiCrtice(142);
+
+            RedLjestvice sum = new RedLjestvice();
 
             foreach (var elem in dnevnikTablice)
             {
+                sum.BrojPobjeda += elem.Value.BrojPobjeda;
+                sum.BrojNerijesenih += elem.Value.BrojNerijesenih;
+                sum.BrojPoraza += elem.Value.BrojPoraza;
+                sum.BrojDanihGolova += elem.Value.BrojDanihGolova;
+                sum.BrojPrimljenihGolova += elem.Value.BrojPrimljenihGolova;
+                sum.BrojBodova += elem.Value.BrojBodova;
+
                 elem.Value.BrojOdigranihKola = odigranaKola[elem.Key].Distinct().ToList().Count();
-                Console.WriteLine(string.Format("{0, -4} {1, -20} {2, -20} {3, -40}", elem.Key.oznaka,
+                Console.WriteLine(string.Format("{0, -6} {1, -25} {2, -20} {3, -40}", elem.Key.oznaka,
                    elem.Key.naziv, elem.Key.DohvatiDjecu().Find(el=>el.NazivRazine == NaziviRazina.Trener).ToString(), elem.Value));
             }
+            EmptyLineConsole.IspisiCrtice(142);
+            Console.WriteLine(string.Format("{0,-53} {1, -40}",
+                "Sumirano:", sum));
         }
     }
 }

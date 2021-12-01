@@ -26,7 +26,7 @@ namespace ivuk_zadaca_2.ObradaPodataka
 
         public override string ToString()
         {
-            return string.Format("{0, 5} {1,-20} {2,-20} {3,-20} {4,-20}",
+            return string.Format("{0, 4}  {1, -20} {2, -20} {3,-20} {4,-20}",
                     Kolo, DatumIVrijeme, Domacin.naziv, Gost.naziv, Rezultat);
         }
     }

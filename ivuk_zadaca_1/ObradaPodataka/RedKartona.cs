@@ -15,7 +15,7 @@ namespace ivuk_zadaca_2.ObradaPodataka
 
         public override string ToString()
         {
-            return string.Format("{0,-12} {1,-12} {2,-12} {3,-12}",
+            return string.Format("{0, 4} {1, 18} {2, 8} {3, 12}",
                     BrojZutih, BrojDrugihZutih, BrojCrvenih,
                     BrojZutih+BrojDrugihZutih+BrojCrvenih);       
         }
